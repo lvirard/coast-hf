@@ -10,3 +10,5 @@ Step 2 : Insert real data --> completed
 Step 3 : host online & with daily pushed updated data --> ongoing
 
 The files accesibles from the repository are the Step 2 files.
+The app is runned by a terminal using the command :
+streamlit run accueil.py
