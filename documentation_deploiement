@@ -1,0 +1,34 @@
+Déploiement inspiré de : 
+https://docs.streamlit.io/deploy/tutorials/docker
+
+ssh root@82.165.144.78
+mkdir app
+cd app/
+git clone https://github.com/lvirard/coast-hf.git coast_hf
+vi Dockerfile
+Contenu de Dockerfile: 
+# app/Dockerfile
+FROM python:3.6
+WORKDIR /app
+COPY coast_hf/. .
+RUN pip install --upgrade pip
+RUN pip install streamlit
+RUN pip install folium
+RUN pip install streamlit_folium
+RUN pip install plotly
+EXPOSE 80
+HEALTHCHECK CMD curl --fail http://localhost:80/_stcore/health
+ENTRYPOINT ["streamlit", "run", "accueil.py", "--server.port=80", "--server.address=0.0.0.0"]
+
+docker build -t coasthf .
+( pour refaire sans utiliser le cache: docker build --no-cache -t coasthf . )
+( pour sauver toutes les sorties du build: docker build --no-cache --progress=plain  -t coasthf . &> build.log
+)
+docker run -d -p 80:80 --mount type=bind,source=/root/app/coast_hf/data
+,target=./data coasthf
+
+
+
+pb espace après plusieurs tests. Pour nettoyer: docker system prune --all --volumes --force
+
+Transfert des fichiers vers le server vps: scp toto root@82.165.144.78:. 
