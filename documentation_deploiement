@@ -32,3 +32,10 @@ docker run -d -p 80:80 --mount type=bind,source=/root/app/coast_hf/data
 pb espace après plusieurs tests. Pour nettoyer: docker system prune --all --volumes --force
 
 Transfert des fichiers vers le server vps: scp toto root@82.165.144.78:. 
+
+
+
+
+Doc utile à conserver pour plus tard : 
+Fabriquer son propre container - https://veron.univ-tln.fr/docker/dockerfile.html
+Comment déployer facilement une application streamlit - https://docs.kanaries.net/fr/topics/Streamlit/deploy-streamlit-app
