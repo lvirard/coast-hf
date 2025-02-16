@@ -9,8 +9,8 @@ st.set_option('client.showErrorDetails', True)
 
 
 # Initialisation de l'état partagé et remise à zéro de la bouée sélectionnée
-if "bouee_selectionnee" not in st.session_state:
-    st.session_state.bouee_selectionnee = None
+# if "bouee_selectionnee" not in st.session_state:
+#     st.session_state.bouee_selectionnee = None
 st.session_state.bouee_selectionnee = None
 
 # 1. Données de bouées
@@ -96,13 +96,13 @@ def page_accueil():
             for nom, info in bouees.items():
                 if (info['lat'], info['lon']) == (clicked_position['lat'], clicked_position['lng']):
                     st.session_state.bouee_selectionnee = nom
-                    st.switch_page("pages/details_bouee.py")
+                    st.switch_page("pages/Data.py")
                     break
 
     # Via la selection de la bouée dans le selectbox
     if bouee_selectionnee != "Sélectionner une bouée...":
         st.session_state.bouee_selectionnee = bouee_selectionnee
-        st.switch_page("pages/details_bouee.py")
+        st.switch_page("pages/Data.py")
 
 # 4. Appel de la page d'accueil
 page_accueil()
