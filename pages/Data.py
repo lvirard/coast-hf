@@ -258,7 +258,7 @@ def page_details():
         st.sidebar.write(f"""
                          Les paramètres sont mesurés par des capteurs intégrés à la bouée directement sur place, dans l'eau de mer, toutes les 20 minutes environ (la fréquence peut varier selon les sites).<br>
                          La température correspond à la température de l'eau.<br>
-                         La salinité correspond à la concentration de sel dans l'eau exprimée en grammes de sel par kilogramme d'eau. La salnité de l'océan peut être proche de 0 (à proximité des rivières) et dépasser les 38 PSU (lorsque l'évaporation est importante comme en Méditerranée). La salinité est généralement comprise entre 34 et 35 PSU.<br>
+                         La salinité correspond à la concentration de sel dans l'eau exprimée en grammes de sel par kilogramme d'eau. La salinité de l'océan peut être proche de 0 (à proximité des rivières) et dépasser les 38 PSU (lorsque l'évaporation est importante comme en Méditerranée). La salinité est généralement comprise entre 34 et 35 PSU.<br>
                          La turbidité correspond à l'aspect plus ou moins trouble de l'eau. Une turbidité de 0 est une eau complètement transparente.<br>
                          La fluorescence mesure indirectement la concentration de phytoplancton dans l'eau. <br>
                          <br>
