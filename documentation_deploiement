@@ -25,7 +25,7 @@ docker build -t coasthf .
 ( pour sauver toutes les sorties du build: docker build --no-cache --progress=plain  -t coasthf . &> build.log
 )
 docker run -d -p 80:80 --mount type=bind,source=/root/app/coast_hf/data
-,target=./data coasthf
+,target=/app/data coasthf
 
 
 
@@ -33,7 +33,7 @@ pb espace après plusieurs tests. Pour nettoyer: docker system prune --all --vol
 
 Transfert des fichiers vers le server vps: scp toto root@82.165.144.78:. 
 
-
+// Marche pour un déploiement sans https (nécesite de mettre en place un reverse-proxy et de modifier le dockerfile en conséquence).
 
 
 Doc utile à conserver pour plus tard : 
