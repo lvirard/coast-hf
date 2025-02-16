@@ -7,9 +7,9 @@ Step 1 : design the app with streamlit and fictive data --> completed
 
 Step 2 : Insert real data --> completed
 
-Step 3 : host online & with daily pushed updated data --> ongoing
+Step 3 : Host online & with daily pushed updated data --> ongoing
 Work online, but not yet with pushed updated data.
-http://app.coast-hf.fr
+http://data.coast-hf.fr
 
 The files accesibles from the repository are the Step 2 files.
 The app is runned by a terminal using the command :
