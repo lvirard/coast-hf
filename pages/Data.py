@@ -3,7 +3,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import datetime
-from accueil import bouees
+from Accueil import bouees
 from commands.read_insitu import read_hf
 from glob import glob
 import plotly.express as px
@@ -11,6 +11,7 @@ import plotly.express as px
 #---------------------------------Initialisation streamlit/congif page---------------------------------
 
 st.set_page_config(page_title="App Coast-HF - détail", page_icon=":material/monitoring:",layout="wide")
+
 
 #---------------------------------Initialisation des variables---------------------------------
 
@@ -51,7 +52,7 @@ def get_last_n_files(search_pattern, n=1):
         if st.button(" ← Retour à l'accueil"):
             st.session_state.parametre = "Température"
             st.session_state.periode = "Semaine dernière"
-            st.switch_page("accueil.py")
+            st.switch_page("Accueil.py")
     # Retourne uniquement les chemins des fichiers
 
 
@@ -115,12 +116,18 @@ def stats_bouee(ftoread, periode, parametre):
                 'Date': df.index,
                 'Paramètre': df[var_name]
             }).set_index('Date')
+        
+        
+
     except:
-        st.warning('Pas de données disponibles.')
-        if st.button(" ← Retour à l'accueil"):
-            st.session_state.parametre = "Température"
-            st.session_state.periode = "Semaine dernière"
-            st.switch_page("accueil.py")
+        data = []
+        df_plot = []
+        unit = []
+        # st.warning('Pas de données disponibles.')
+        # if st.button(" ← Retour à l'accueil"):
+        #     st.session_state.parametre = "Température"
+        #     st.session_state.periode = "Semaine dernière"
+        #     st.switch_page("accueil.py")
     
     return data, df_plot, unit
 
@@ -136,15 +143,21 @@ def page_details():
             if last_selected in bouees:
                 st.session_state.bouee_selectionnee = last_selected
             else:
-                st.switch_page("accueil.py")
+                st.switch_page("Accueil.py")
                 return
         except:
-            st.switch_page("accueil.py")
+            st.switch_page("Accueil.py")
             return
+      
         
     # 1.2 Mise à jour des paramètres d'URL & session_state avec la bouée sélectionnée
     st.query_params["bouee"] = st.session_state.bouee_selectionnee
     bouee_selectionnee = st.session_state.bouee_selectionnee
+
+      
+    if bouee_selectionnee is None:
+        st.switch_page("Accueil.py")
+        return
 
     # 1.3 Mise à jour des paramètres d'URL & session_state avec la période sélectionnée
     if "periode" not in st.session_state:
@@ -168,12 +181,22 @@ def page_details():
     last_files = get_last_n_files(search_pattern, n=1)
 
     # 1.8 Vérification si les données sont disponibles & appel de la fonction stats_bouee
-    if len(last_files) == 0:
+    print(last_files)
+    # if len(last_files) == 0:
+    if last_files is None: 
         st.warning(f'Pas de données disponibles pour la bouée {bouee_selectionnee}')
         return
     else:
         ftoread = last_files[0]
         data, df_plot, unit = stats_bouee(ftoread, periode, parametre)
+        if len(data)==0:
+            st.warning(f'Pas de données disponibles pour la bouée {bouee_selectionnee} et pour le parametre {parametre}')
+            if st.button(" ← Retour à l'accueil"):
+                st.session_state.parametre = "Température"
+                st.session_state.periode = "Semaine dernière"
+                st.switch_page("Accueil.py")
+            return
+
 
     # ------ 2. Mise en forme & insertion du contenu ------
 
@@ -204,7 +227,7 @@ def page_details():
         
         # 2.2.5 Bouton retour accueil
         if st.sidebar.button("← Retour à l'accueil"):
-            st.switch_page("accueil.py")
+            st.switch_page("Accueil.py")
 
        
         # 2.2.6 Formulaire de sélection de la période & du paramètre
@@ -233,9 +256,9 @@ def page_details():
         # 2.2.8 Informations sur la bouée
         st.sidebar.subheader("Informations")
         st.sidebar.write(f"""
-                         Les paramètres sont mesurés par des capteurs intégrés à la bouée directement sur place, dans l'eau de mer, toutes les 20 minutes.<br>
-                         La température correspond donc à la température de l'eau.<br>
-                         La salinité correspond à la concentration de sel dans l'eau. L'océan est en moyenne entre 33 et 34 PSU.<br>
+                         Les paramètres sont mesurés par des capteurs intégrés à la bouée directement sur place, dans l'eau de mer, toutes les 20 minutes environ (la fréquence peut varier selon les sites).<br>
+                         La température correspond à la température de l'eau.<br>
+                         La salinité correspond à la concentration de sel dans l'eau exprimée en grammes de sel par kilogramme d'eau. La salnité de l'océan peut être proche de 0 (à proximité des rivières) et dépasser les 38 PSU (lorsque l'évaporation est importante comme en Méditerranée). La salinité est généralement comprise entre 34 et 35 PSU.<br>
                          La turbidité correspond à l'aspect plus ou moins trouble de l'eau. Une turbidité de 0 est une eau complètement transparente.<br>
                          La fluorescence mesure indirectement la concentration de phytoplancton dans l'eau. <br>
                          <br>
