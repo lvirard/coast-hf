@@ -1,7 +1,9 @@
 # coast-hf
 An app to easily visualize oceanographic data from Coast-HF network
 
-Project In 3 STEPS :
+
+Project developped during a 3 weeks internship in LOPS-Ifremer
+In 3 STEPS :
 
 Step 1 : design the app with streamlit and fictive data --> completed
 
@@ -17,14 +19,8 @@ streamlit run accueil.py
 
 
 Recommandations pour la suite (FR) : 
-- trouver la façon de lire des fichiers sur le VPS qui ne sont pas dans le container
+- Vérifier que le certificat SSL fonctionne correctement
 - Créer un programme qui permet d’envoyer quotidiennement le fichier LATEST pour toutes les bouées sur le VPS.
-- Régler les erreurs d’affichage dans le cas ou il n’y a pas de données disponibles (rajouter des try except dans le code)
-      exemples d’erreurs testées qui apparaissent en rouge :
-            - lorsqu’il n’y a pas de fichier associé à la bouée
-            - lorsqu’il n’y a pas de données associées au paramètre choisi
-- trouver le moyen d’enlever la navigation entre les pages dans le menu en haut à gauche (les onglets avec le nom des pages).
 - rajouter une période annuelle ? 
 - rajouter la hauteur d’eau sur les graphs pour comparer avec les marées ? 
-- modifier l’onglet informations pour n’y afficher que ce que l’on veut.
 - créer un lien depuis le site coast-hf pour accéder à l’application.
