@@ -1,26 +1,24 @@
 # coast-hf
 An app to easily visualize oceanographic data from Coast-HF network
+http://data.coast-hf.fr
 
-
-Project developped during a 3 weeks internship in LOPS-Ifremer
+Project developped during a 3 weeks internship in LOPS-Ifremer.
 In 3 STEPS :
 
 Step 1 : design the app with streamlit and fictive data --> completed
-
 Step 2 : Insert real data --> completed
+Step 3 : Host online & with daily pushed updated data --> partially completed
 
-Step 3 : Host online & with daily pushed updated data --> ongoing
-Work online, but not yet with pushed updated data.
-http://data.coast-hf.fr
+The application works online, but not yet with pushed updated data.
+Latest update of data from Cast-hf running on the vps : 16-02-2025.
 
-The files accesibles from the repository are the Step 2 files.
-The app is runned by a terminal using the command :
-streamlit run accueil.py
-
-
-Recommandations pour la suite (FR) : 
-- Vérifier que le certificat SSL fonctionne correctement
+A faire pour terminer le projet (FR) : 
+- Vérifier que le certificat SSL fonctionne correctement.
 - Créer un programme qui permet d’envoyer quotidiennement le fichier LATEST pour toutes les bouées sur le VPS.
-- rajouter une période annuelle ? 
-- rajouter la hauteur d’eau sur les graphs pour comparer avec les marées ? 
 - créer un lien depuis le site coast-hf pour accéder à l’application.
+
+Améliorations à apporter à l'application (FR) :
+- faire une version en anglais.
+- rajouter une période annuelle.
+- rajouter la hauteur d’eau sur les graphs pour comparer avec les marées.
+
