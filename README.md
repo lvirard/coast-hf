@@ -16,6 +16,7 @@ A faire pour terminer le projet (FR) :
 - Vérifier que le certificat SSL fonctionne correctement.
 - Créer un programme qui permet d’envoyer quotidiennement le fichier LATEST pour toutes les bouées sur le VPS.
 - créer un lien depuis le site coast-hf pour accéder à l’application.
+- rendre l'appli de nouveau responsive.
 
 Améliorations à apporter à l'application (FR) :
 - faire une version en anglais.
