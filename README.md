@@ -7,14 +7,10 @@ In 3 STEPS :
 
 Step 1 : design the app with streamlit and fictive data --> completed
 Step 2 : Insert real data --> completed
-Step 3 : Host online & with daily pushed updated data --> partially completed
-
-The application works online, but not yet with pushed updated data.
-Latest update of data from Cast-hf running on the vps : 16-02-2025.
+Step 3 : Host online & with daily pushed updated data --> Completed
 
 A faire pour terminer le projet (FR) : 
 - Vérifier que le certificat SSL fonctionne correctement.
-- Créer un programme qui permet d’envoyer quotidiennement le fichier LATEST pour toutes les bouées sur le VPS.
 - créer un lien depuis le site coast-hf pour accéder à l’application.
 - rendre l'appli de nouveau responsive.
 
